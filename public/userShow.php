@@ -1,5 +1,6 @@
 <?php
-include 'connect.php';
+// include 'connect.php';
+require "../private/autoload.php";
 
 $id = $_GET['loginUserId'];
 $sql = "Select * from `users` where id=$id";

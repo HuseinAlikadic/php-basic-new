@@ -1,5 +1,6 @@
 <?php
-include 'connect.php';
+// include 'connect.php';
+require "../private/autoload.php";
 $loginUserId = $_GET['loginUserId'];
 ?>
 
@@ -16,7 +17,6 @@ $loginUserId = $_GET['loginUserId'];
 
 <body>
     <div class="container">
-
         <a class="btn btn-primary my-5" href="register.php" class="text-light">Add user</a>
         <table class="table">
             <thead>
@@ -45,22 +45,23 @@ $loginUserId = $_GET['loginUserId'];
                         $password = $row['password'];
                         $note = $row['note'];
                         $is_admin = $row['is_admin'];
-                        $deleteButton = '';
+
                         if ($is_admin == 0) {
                             $is_admin = 'No';
                             $deleteButton = '<a class="btn btn-sm btn-danger" href="delete.php?deleteid=' . $id . '&loginUserId=' . $loginUserId . '" class="text-light">Delete</a>';
                         } else {
                             $is_admin = 'Yes';
+                            $deleteButton = '';
                         }
                         echo '<tr>
                     <td>' . $id . '</td>
                     <td>' . $name . '</td>
                     <td>' . $email . '</td>
                     <td>' . $password . '</td>
-                     <td>' . $is_admin . '</td>
+                    <td>' . $is_admin . '</td>
                     <td>' . $note . '</td>
-                     <td> <a class="btn btn-sm btn-primary" href="update.php?updateid=' . $id . '&loginUserId=' . $loginUserId . '" class="text-light">Update</a> </td>
-                     <td> ' . $deleteButton . '  </td>
+                    <td> <a class="btn btn-sm btn-primary" href="update.php?updateid=' . $id . '&loginUserId=' . $loginUserId . '" class="text-light">Update</a> </td>
+                    <td> ' . $deleteButton . '  </td>
                     </tr>';
                     }
                 }

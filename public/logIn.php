@@ -1,20 +1,18 @@
 <?php
-include 'connect.php';
-
+// include 'connect.php';
+require "../private/autoload.php";
 
 
 if (isset($_POST['submit'])) {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
+
     if ($email != '' && $password != '') {
-
-
+        // echo "<script>console.log( '  $password  ')</script>";
         $logInUser = "select * from `users` where password='$password' and email='$email'";
-        // echo  $logInUser;
         $resultUser = mysqli_query($con, $logInUser);
         $value =  mysqli_fetch_array($resultUser);
-
 
         if ($value) {
             $userId = $value[0];
@@ -33,6 +31,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +48,8 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
     <div class="container">
-        <h2>Log In form</h2>
+
         <form method="post">
             <div class="form-group">
                 <label for="email">Email:</label>

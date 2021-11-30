@@ -1,5 +1,6 @@
 <?php
-include 'connect.php';
+// include 'connect.php';
+require "../private/autoload.php";
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
